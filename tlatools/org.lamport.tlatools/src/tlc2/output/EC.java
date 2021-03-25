@@ -31,7 +31,6 @@ public interface EC
     public static final int CHECK_PARAM_TRACE_REQUIRED = 3109;
     public static final int CHECK_PARAM_COVREAGE_REQUIRED = 3110;
     public static final int CHECK_PARAM_COVREAGE_REQUIRED2 = 3111;
-    public static final int CHECK_PARAM_COVREAGE_TOO_SMALL = 3112;
     public static final int CHECK_PARAM_UNRECOGNIZED = 3113;
     public static final int CHECK_PARAM_TOO_MANY_INPUT_FILES = 3114;
 

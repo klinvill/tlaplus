@@ -162,7 +162,7 @@ public class CheckImplFile extends CheckImpl
      *  o -trace filename: the prefix of the trace file name.   
      *  o -coverage seconds: collect coverage information on the spec,
      *                       print out the information every seconds
-     *    Defaults to no coverage if not specified
+     *    Defaults to no coverage if not specified or if given a negative value
      **/
     public static void main(String[] args) {
     ToolIO.out.println("TLC CheckImpl" + TLCGlobals.versionOfTLC);
@@ -262,10 +262,6 @@ public class CheckImplFile extends CheckImpl
             if (index < args.length) {
                 try {
                     TLCGlobals.coverageInterval = Integer.parseInt(args[index]) * 1000 * 60;
-                    if (TLCGlobals.coverageInterval < 0) {
-                        printErrorMsg(MP.getMessage(EC.CHECK_PARAM_COVREAGE_TOO_SMALL));
-                        return;
-                    }
                     index++;
                 }
                 catch (NumberFormatException e) {

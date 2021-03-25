@@ -653,10 +653,6 @@ public class MP
             b.append("Coverage report interval required.");
             break;
 
-        case EC.CHECK_PARAM_COVREAGE_TOO_SMALL:
-            b.append("Expect a nonnegative integer for -coverage option.");
-            break;
-
         case EC.CHECK_PARAM_UNRECOGNIZED:
             if (parameters.length == 1) {
                 b.append("Unrecognized option: %1%");
