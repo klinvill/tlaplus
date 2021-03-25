@@ -248,7 +248,7 @@ public class TLC {
      *		Defaults to expand value if not specified
      *  o -coverage minutes: collect coverage information on the spec,
      *					print out the information every minutes.
-     *		Defaults to no coverage if not specified
+     *		Defaults to no coverage if not specified or if given a negative value
      *  o -continue: continue running even when invariant is violated
      *		Defaults to stop at the first violation if not specified
      *  o -lncheck: Check liveness properties at different times
@@ -544,11 +544,6 @@ public class TLC {
                     try
                     {
                         TLCGlobals.coverageInterval = Integer.parseInt(args[index]) * 60 * 1000;
-                        if (TLCGlobals.coverageInterval < 0)
-                        {
-                            printErrorMsg("Error: expect a nonnegative integer for -coverage option.");
-                            return false;
-                        }
                         index++;
                     } catch (NumberFormatException e)
                     {
@@ -1348,7 +1343,8 @@ public class TLC {
     														+ "behavior is to halt on first violation", true));
     	sharedArguments.add(new UsageGenerator.Argument("-coverage", "minutes",
 														"interval between the collection of coverage information;\n"
-    														+ "if not specified, no coverage will be collected", true));
+    														+ "if not specified or given a negative value, no coverage\n"
+    														+ "will be collected", true));
     	sharedArguments.add(new UsageGenerator.Argument("-deadlock",
 														"if specified DO NOT CHECK FOR DEADLOCK. Setting the flag is\n"
 															+ "the same as setting CHECK_DEADLOCK to FALSE in config\n"

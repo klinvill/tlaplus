@@ -122,6 +122,20 @@ public class TLCTest {
 				TLAConstants.Files.MODEL_CHECK_FILE_BASENAME }));
 		assertTrue(TLCGlobals.setBound == Integer.MAX_VALUE);
 	}
+
+	@Test
+	public void testHandleParametersExplicitlyDisableCoverage() {
+		final TLC tlc = new TLC();
+		assertTrue(tlc.handleParameters(new String[] {"-coverage", "-1", TLAConstants.Files.MODEL_CHECK_FILE_BASENAME}));
+		assertFalse(TLCGlobals.isCoverageEnabled());
+	}
+
+	@Test
+	public void testHandleParametersExplicitlyEnableCoverage() {
+		final TLC tlc = new TLC();
+		assertTrue(tlc.handleParameters(new String[] {"-coverage", "1", TLAConstants.Files.MODEL_CHECK_FILE_BASENAME}));
+		assertTrue(TLCGlobals.isCoverageEnabled());
+	}
 	
 	@Test
 	public void testRuntimeConversion() {
